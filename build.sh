@@ -12,7 +12,7 @@ cd ruby
 
 # Transform
 
-BASHBREW_SCRIPTS=../.. ./apply-templates.sh
+#BASHBREW_SCRIPTS=../.. ./apply-templates.sh
 
 sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
 
