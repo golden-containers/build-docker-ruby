@@ -7,17 +7,19 @@ cd working
 
 # Checkout upstream
 
-# git clone --depth 1 --branch main https://github.com/upstream/upstream.git
-# cd upstream
+git clone --depth 1 --branch master https://github.com/docker-library/ruby.git
+cd ruby
 
 # Transform
 
-# sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/bullseye/" 17/bullseye/Dockerfile
+BASHBREW_SCRIPTS=../.. ./apply-templates.sh
+
+sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
 
 # Build
 
-# docker build --tag ghcr.io/golden-containers/upstream-bullseye-slim:17 17/bullseye-slim
+docker build --tag ghcr.io/golden-containers/ruby:3.0-bullseye 3.0/bullseye
 
 # Push
 
-# docker push ghcr.io/golden-containers/upstream-bullseye-slim:17
+docker push ghcr.io/golden-containers/ruby:3.0-bullseye
