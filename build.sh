@@ -22,4 +22,4 @@ docker build --tag ghcr.io/golden-containers/ruby:3.0-bullseye 3.0/bullseye
 
 # Push
 
-docker push ghcr.io/golden-containers/ruby:3.0-bullseye
+docker push ghcr.io/golden-containers/ruby -a
