@@ -13,7 +13,7 @@ cd ruby
 # Transform
 
 sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
-echo -e "\nLABEL https://github.com/golden-containers/build-docker-ruby/actions/workflows/build.yml" >> 3.0/bullseye/Dockerfile
+echo -e "\nLABEL BuildLink=\"https://github.com/golden-containers/build-docker-ruby/actions/workflows/build.yml\"" >> 3.0/bullseye/Dockerfile
 
 # Build
 
