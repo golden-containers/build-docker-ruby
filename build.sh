@@ -12,9 +12,12 @@ cd ruby
 
 # Transform
 
-sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
+# This sed syntax is GNU sed specific
+[ -z $(command -v gsed) ] && GNU_SED=sed || GNU_SED=gsed
 
-sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/debian:bullseye-slim/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/debian:bullseye-slim/" 3.0/slim-bullseye/Dockerfile
+${GNU_SED} -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
+
+${GNU_SED} -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/debian:bullseye-slim/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/debian:bullseye-slim/" 3.0/slim-bullseye/Dockerfile
 
 # Build
 
