@@ -13,10 +13,10 @@ cd ruby
 # Transform
 
 sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/buildpack-deps:bullseye/" 3.0/bullseye/Dockerfile
-echo "LABEL $1" >> 3.0/bullseye/Dockerfile
+echo "LABEL ${1:-DEBUG=TRUE}" >> 3.0/bullseye/Dockerfile
 
 sed -i -e "1 s/FROM.*/FROM ghcr.io\/golden-containers\/debian:bullseye-slim/; t" -e "1,// s//FROM ghcr.io\/golden-containers\/debian:bullseye-slim/" 3.0/slim-bullseye/Dockerfile
-echo "LABEL $1" >> 3.0/slim-bullseye/Dockerfile
+echo "LABEL ${1:-DEBUG=TRUE}" >> 3.0/slim-bullseye/Dockerfile
 
 # Build
 
